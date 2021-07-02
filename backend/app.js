@@ -7,7 +7,7 @@ const routes = require('./routes/routes')
 
 const app = express();
 
-require('./db/db')
+require('./models');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
