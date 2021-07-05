@@ -9,3 +9,6 @@ mongoose.connect(config.db, {
 }).catch(err => {
   console.log(err)
 })
+
+exports.User = require('./user')
+exports.Topic = require('./topic')
