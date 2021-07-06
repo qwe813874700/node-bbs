@@ -1,14 +1,54 @@
 <template>
   <div class="layout">
-    <div class="layout-header">
+    <el-row class="layout-header">
       <Header></Header>
-    </div>
-    <div class="layout-container">
-      <div class="container-content">
-        <router-view></router-view>
-      </div>
-      <div class="container-slider hidden-md-only">
+    </el-row>
+    <div class="layout-container" :gutter="20">
+      <div class="container-slider hidden-xs-only fr">
         <Slider></Slider>
+      </div>
+      <div class="content">
+        <el-card class="mg-t">
+          <div slot="header">
+            <span>卡片名称</span>
+          </div>
+        </el-card>
+        <el-card class="mg-t">
+          <div slot="header">
+            <span>卡片名称</span>
+          </div>
+        </el-card>
+        <el-card class="mg-t">
+          <div slot="header">
+            <span>卡片名称</span>
+          </div>
+        </el-card>
+        <el-card class="mg-t">
+          <div slot="header">
+            <span>卡片名称</span>
+          </div>
+        </el-card>
+        <el-card class="mg-t">
+          <div slot="header">
+            <span>卡片名称</span>
+          </div>
+        </el-card>
+        <el-card class="mg-t">
+          <div slot="header">
+            <span>卡片名称</span>
+          </div>
+        </el-card>
+        <el-card class="mg-t">
+          <div slot="header">
+            <span>卡片名称</span>
+          </div>
+        </el-card>
+        <el-card class="mg-t">
+          <div slot="header">
+            <span>卡片名称</span>
+          </div>
+        </el-card>
+        <router-view></router-view>
       </div>
     </div>
     <div class="layout-footer">

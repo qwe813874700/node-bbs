@@ -1,1 +1,53 @@
-@import './layout.scss';
+@import "./layout.scss";
+@import "~element-ui/lib/theme-chalk/display.css";
+
+body {
+  background: $main_color;
+}
+
+body,
+div,
+ul,
+li,
+ol,
+p,
+span,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+dl,
+dd,
+dt,
+form,
+input,
+textarea,
+select，option {
+  padding: 0;
+  margin: 0;
+}
+li {
+  list-style: none;
+}
+img {
+  border: none;
+}
+a {
+  text-decoration: none;
+}
+
+.clearfix:after {
+  content: ".";
+  visibility: hidden;
+  display: block;
+  height: 0;
+  clear: both;
+}
+.fl {
+  float: left;
+}
+.fr {
+  float: right;
+}
