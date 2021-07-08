@@ -10,13 +10,13 @@
           <router-link to="/">未读消息</router-link>
         </li>
         <li>
-          <router-link to="/">我的话题</router-link>
+          <router-link to="/topic/111">我的话题</router-link>
         </li>
         <li>
-          <router-link to="/">登录</router-link>
+          <router-link to="/login">登录</router-link>
         </li>
         <li>
-          <router-link to="/">注册</router-link>
+          <router-link to="/register">注册</router-link>
         </li>
         <li>
           <router-link to="/">退出</router-link>
@@ -37,10 +37,10 @@
         <router-link to="/">我的话题</router-link>
       </li>
       <li>
-        <router-link to="/">登录</router-link>
+        <router-link to="/login">登录</router-link>
       </li>
       <li>
-        <router-link to="/">注册</router-link>
+        <router-link to="/register">注册</router-link>
       </li>
       <li>
         <router-link to="/">退出</router-link>

@@ -8,46 +8,6 @@
         <Slider></Slider>
       </div>
       <div class="content">
-        <el-card class="mg-t">
-          <div slot="header">
-            <span>卡片名称</span>
-          </div>
-        </el-card>
-        <el-card class="mg-t">
-          <div slot="header">
-            <span>卡片名称</span>
-          </div>
-        </el-card>
-        <el-card class="mg-t">
-          <div slot="header">
-            <span>卡片名称</span>
-          </div>
-        </el-card>
-        <el-card class="mg-t">
-          <div slot="header">
-            <span>卡片名称</span>
-          </div>
-        </el-card>
-        <el-card class="mg-t">
-          <div slot="header">
-            <span>卡片名称</span>
-          </div>
-        </el-card>
-        <el-card class="mg-t">
-          <div slot="header">
-            <span>卡片名称</span>
-          </div>
-        </el-card>
-        <el-card class="mg-t">
-          <div slot="header">
-            <span>卡片名称</span>
-          </div>
-        </el-card>
-        <el-card class="mg-t">
-          <div slot="header">
-            <span>卡片名称</span>
-          </div>
-        </el-card>
         <router-view></router-view>
       </div>
     </div>
