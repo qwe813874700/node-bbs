@@ -27,12 +27,12 @@ const routes = [
         }
       },
       {
-        path: 'topic-list',
+        path: 'topic/list',
         name: 'TopicList',
         component: () => import('components/Topic/TopicList')
       },
       {
-        path: 'topic-create',
+        path: 'topic/create',
         name: 'TopicCreate',
         component: () => import('components/Topic/TopicCreate'),
         meta: {
@@ -40,7 +40,7 @@ const routes = [
         }
       },
       {
-        path: 'topic/:id',
+        path: 'topic/content/:id',
         name: 'Topic',
         component: () => import('components/Topic/Topic')
       },

@@ -22,3 +22,9 @@
   right: 0;
   background: rgba(0, 0, 0, 0.6);
 }
+
+@mixin topic_type_active($radius_size) {
+  background: $toplic_main_color;
+  color: $while_color;
+  border-radius: $radius_size;
+}

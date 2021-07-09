@@ -2,7 +2,7 @@
   <div class="header">
     <a href="" class="logo fl"></a>
     <div class="menu-motal">
-      <ul class="menu-mobile hidden-sm-and-up" :class="{hidden: hidden}">
+      <ul class="menu-mobile hidden-md-and-up" :class="{hidden: hidden}">
         <li>
           <router-link to="/">首页</router-link>
         </li>
@@ -23,10 +23,10 @@
         </li>
       </ul>
     </div>
-    <div class="el-icon-menu menu-click hidden-sm-and-up" @click.prevent.stop="changeMobeilType">
+    <div class="el-icon-menu menu-click hidden-md-and-up" @click.prevent.stop="changeMobeilType">
 
     </div>
-    <ul class="header-nav hidden-xs-only">
+    <ul class="header-nav hidden-min-screen">
       <li>
         <router-link to="/">首页</router-link>
       </li>
@@ -105,6 +105,7 @@ $slider_width: 200px;
     }
   }
   .menu-motal {
+    z-index: 99;
     .menu-mobile {
       width: $slider_width;
       position: fixed;

@@ -1,5 +1,6 @@
 @import "./layout.scss";
 @import "~element-ui/lib/theme-chalk/display.css";
+@import "./media.scss";
 
 body {
   background: $main_color;
@@ -50,4 +51,11 @@ a {
 }
 .fr {
   float: right;
+}
+.el-card {
+  &.no-padding {
+    .el-card__body {
+      padding: 0;
+    }
+  }
 }

@@ -4,7 +4,7 @@
       <Header></Header>
     </el-row>
     <div class="layout-container" :gutter="20">
-      <div class="container-slider hidden-xs-only fr">
+      <div class="container-slider hidden-min-screen  fr">
         <Slider></Slider>
       </div>
       <div class="content">
