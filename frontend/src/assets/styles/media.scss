@@ -1,0 +1,5 @@
+.hidden-min-screen {
+  @media screen and (max-width: $change_size) {
+    display: none !important;
+  }
+}
