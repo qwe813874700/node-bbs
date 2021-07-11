@@ -9,6 +9,7 @@ module.exports = {
       .set('@', resolve('./src')) //根据目录的层级来决定，也可以自行设
       .set('components', resolve('./src/components'))
       .set('assets', resolve('./src/assets'))
+      .set('api', resolve('./src/api'))
   },
   css: {
     loaderOptions: {

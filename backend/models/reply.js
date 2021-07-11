@@ -25,4 +25,4 @@ const replySchema =  new Schema({
   }
 })
 
-module.exports = mongoose.Model('Reply', replySchema)
+module.exports = mongoose.model('Reply', replySchema)
