@@ -28,16 +28,27 @@ exports.register = (req, res, next) => {
       msg: '密码至少为6位'
     })
   }
-
   User.findOne({
     email: userInfo.email
-  }).then((data) => {
+  }).then(data => {
     if (!data) {
-      
+      return new User({
+        email: userInfo.email,
+        username: userInfo.email,
+        password: userInfo.password
+      }).save()
+    } else {
+      return Promise.reject()
     }
+  }).then(() => {
+    res.json({
+      code: 0,
+      msg: '注册成功'
+    })
   }).catch(err => {
-
+    res.json({
+      code: -1,
+      msg: '注册失败,该用户已存在'
+    })
   })
-
-
 }

@@ -13,7 +13,7 @@
         ]">
         <el-input v-model="formData.email"></el-input>
       </el-form-item>
-      <el-form-item label="密码" prop="pass">
+      <el-form-item label="密码" prop="password">
         <el-input type="password" v-model="formData.password" autocomplete="off"></el-input>
       </el-form-item>
       <el-form-item label="确认密码" prop="checkPass">
@@ -79,7 +79,20 @@ export default {
     submitRegiester(formName) {
       this.$refs[formName].validate((validResult) => { // 校验成功时， validResult 为 true
         if (validResult) {
-          this.$request.register(this.formData)
+          this.$request.register(this.formData).then(res => {
+            console.log(res)
+            if (res.code === this.$config.SUCC_CODE) {
+              this.$notify.success({
+                title: '成功',
+                message: res.msg
+              })
+            } else {
+              this.$notify.error({
+                title: '失败',
+                message: res.msg
+              })
+            }
+          })
         } else {
           console.log('error submit!!');
           return false;

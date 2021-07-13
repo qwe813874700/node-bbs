@@ -7,7 +7,7 @@ const userSchema = new Schema({
     type: String,
     require: true
   },
-  Email: {
+  email: {
     type: String,
     require: true
   },
@@ -20,7 +20,8 @@ const userSchema = new Schema({
     default: Date.now
   },
   signature: {
-    type: String
+    type: String,
+    default: ''
   }
 })
 
