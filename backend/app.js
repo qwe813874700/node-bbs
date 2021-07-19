@@ -4,6 +4,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const routes = require('./routes/routes')
+const session = require("express-session");
 
 const app = express();
 
@@ -21,7 +22,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 routes(app)
 
-// catch 404 and forward to error handler
+app.use(session({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: true
+  //cookie: { secure: true }   /*secure https这样的情况才可以访问cookie*/
+}))
+
+
 app.use(function(req, res, next) {
   res.status(404)
 });

@@ -13,6 +13,20 @@ class Request {
       data
     })
   }
+  login(data) {
+    return request({
+      url: '/users/login',
+      method: 'post',
+      data
+    })
+  }
+  getinfo(data) {
+    return request({
+      url: '/users/getinfo',
+      method: 'post',
+      data
+    })
+  }
 }
 
 export default Request

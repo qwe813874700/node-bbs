@@ -1,32 +1,17 @@
 const DataModel = require('../models')
 const User = DataModel.User
 const Verfiy = require('../util/verfiy')
+const md5 = require('md5-node')
 
 exports.users = (req, res, next) => {
   res.send('respond with a resource');
 }
 
-exports.register = (req, res, next) => {
+exports.register = (req, res, next) => { // 用户注册
   const userInfo = req.body
-  if (!userInfo.email || !userInfo.password) {
-    return res.json({
-      code: -1,
-      msg: '账号或密码不能为空'
-    })
-  }
-
-  if (!Verfiy.isEmail(userInfo.email)) {
-    return res.json({
-      code: -1,
-      msg: '用户名只能为邮箱地址'
-    })
-  }
-
-  if (userInfo.email.length < 6) {
-    return res.json({
-      code: -1,
-      msg: '密码至少为6位'
-    })
+  const result = Verfiy.verfiyUserInfo(userInfo)
+  if (result.code == -1) {
+    return res.json(result)
   }
   User.findOne({
     email: userInfo.email
@@ -35,7 +20,7 @@ exports.register = (req, res, next) => {
       return new User({
         email: userInfo.email,
         username: userInfo.email,
-        password: userInfo.password
+        password: md5(md5(userInfo.password))
       }).save()
     } else {
       return Promise.reject()
@@ -51,4 +36,36 @@ exports.register = (req, res, next) => {
       msg: '注册失败,该用户已存在'
     })
   })
+}
+
+exports.login = async (req, res, next) => {
+  const userInfo = req.body
+  const result = Verfiy.verfiyUserInfo(userInfo)
+  if (result.code == -1) {
+    return res.json(result)
+  }
+
+  const findResult = await User.findOne({
+    email: userInfo.email,
+    password: md5(md5(userInfo.password))
+  })
+  
+  if (!findResult) {
+    return res.json({
+      code: -1,
+      msg: '用户名或密码错误'
+    })
+  } else {
+    req.session.userinfo = userInfo
+    return res.json({
+      code: 0,
+      msg: '登录成功'
+    })
+  }
+  
+}
+
+exports.getinfo = (req, res, next) => {
+  console.log(req.session)
+  if (req.session.userinfo) {}
 }

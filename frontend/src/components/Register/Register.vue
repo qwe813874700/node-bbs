@@ -29,49 +29,20 @@
 
 <script>
 import NavBreadcumb from 'components/Common/NavBreadcumb/NavBreadcumb'
+import UserMixin from 'api/mixins/userMixin'
 
 export default {
+  mixins: [UserMixin],
   components: {
     NavBreadcumb
   },
   data() {
-    const validatePass = (rule, value, callback) => {
-      const password = this.formData.password
-      const verfiyPasswordResult = this.$verify.verifyPasswordData(password)
-      if (verfiyPasswordResult.code === -1) {
-        callback(new Error(verfiyPasswordResult.msg))
-      } else {
-        if (this.formData.checkPass !== '') {
-          this.$refs.formData.validateField('checkPass');
-        }
-        callback()
-      }
-    };
-    const validateCheckPass = (rule, value, callback) => {
-      const password = this.formData.checkPass
-      const verfiyPasswordResult = this.$verify.verifyPasswordData(password)
-      if (verfiyPasswordResult.coder === -1) {
-        callback(new Error('请再次输入密码'))
-      } else if (password !== this.formData.password) {
-        callback(new Error('两次输入密码不一致!'))
-      } else {
-        callback()
-      }
-    };
     return {
       formData: {
         password: '',
         checkPass: '',
         username: '',
         email: ''
-      },
-      rules: {
-        pass: [
-          { validator: validatePass, trigger: 'blur' }
-        ],
-        checkPass: [
-          { validator: validateCheckPass, trigger: 'blur' }
-        ]
       }
     };
   },
@@ -80,12 +51,12 @@ export default {
       this.$refs[formName].validate((validResult) => { // 校验成功时， validResult 为 true
         if (validResult) {
           this.$request.register(this.formData).then(res => {
-            console.log(res)
             if (res.code === this.$config.SUCC_CODE) {
               this.$notify.success({
                 title: '成功',
                 message: res.msg
               })
+              this.$router.push('/login')
             } else {
               this.$notify.error({
                 title: '失败',
