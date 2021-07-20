@@ -3,8 +3,11 @@
  * @description 将所有请求封装到这
  */
 import request from 'api/request/request'
+import store from '@/store'
 
-
+const headers = {
+  authorization: store.getters.token
+}
 class Request {
   register(data) {
     return request({
@@ -23,8 +26,9 @@ class Request {
   getinfo(data) {
     return request({
       url: '/users/getinfo',
-      method: 'post',
-      data
+      method: 'get',
+      data,
+      headers
     })
   }
 }

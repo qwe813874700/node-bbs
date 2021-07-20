@@ -2,6 +2,7 @@ const DataModel = require('../models')
 const User = DataModel.User
 const Verfiy = require('../util/verfiy')
 const md5 = require('md5-node')
+const Token = require('../util/token')
 
 exports.users = (req, res, next) => {
   res.send('respond with a resource');
@@ -56,16 +57,16 @@ exports.login = async (req, res, next) => {
       msg: '用户名或密码错误'
     })
   } else {
-    req.session.userinfo = userInfo
+    const token = await Token.setToken(findResult.username, findResult._id)
     return res.json({
       code: 0,
-      msg: '登录成功'
+      msg: '登录成功',
+      token
     })
   }
   
 }
 
 exports.getinfo = (req, res, next) => {
-  console.log(req.session)
-  if (req.session.userinfo) {}
+  console.log(777)
 }

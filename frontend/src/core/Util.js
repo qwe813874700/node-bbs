@@ -4,9 +4,16 @@
  */
 
 class Util {
-  
-  
+  constructor() {
+    this.loginToken = 'LOGIN_TOKEN'
+  }
+  setToken(token) {
+    localStorage.setItem(this.loginToken, token)
+  }
+  getToken() {
+    return localStorage.getItem(this.loginToken)
+  }
 }
 
-export default new Util()
+export default Util
 

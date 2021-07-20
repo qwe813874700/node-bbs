@@ -33,6 +33,9 @@ export default {
   components: {
     NavBreadcumb
   },
+  created() {
+    console.log(this.$store.getters.token)
+  },
   data() {
     return {
       formData: {
@@ -46,6 +49,18 @@ export default {
       this.$refs[formName].validate((valid) => {
         if (valid) {
           this.$request.login(this.formData).then(res => {
+            if (res.code === this.$config.SUCC_CODE) {
+              this.$notify.success({
+                title: '成功',
+                message: res.msg
+              })
+              this.$store.dispatch('succLogin', res.token)
+            } else {
+              this.$notify.error({
+                title: '失败',
+                message: res.msg
+              })
+            }
             this.$request.getinfo()
           })
         } else {

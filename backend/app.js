@@ -4,11 +4,24 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const routes = require('./routes/routes')
-const session = require("express-session");
+const verToken = require('./util/token')
+const expressJwt = require('express-jwt')
 
 const app = express();
 
 require('./models');
+
+app.use(verToken.verfiyToken)
+
+//验证token是否过期并规定那些路由不需要验证
+// app.use(expressJwt({
+//   secret: 'bbs_token',
+//   algorithms: ['HS256']
+// }).unless({
+//   path: ['/users/login', '/users/register'] //不需要验证的接口名称
+// }))
+
+app.use(verToken.resultToken)
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -21,14 +34,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 routes(app)
-
-app.use(session({
-  secret: 'keyboard cat',
-  resave: false,
-  saveUninitialized: true
-  //cookie: { secure: true }   /*secure https这样的情况才可以访问cookie*/
-}))
-
 
 app.use(function(req, res, next) {
   res.status(404)
