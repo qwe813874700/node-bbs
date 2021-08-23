@@ -13,6 +13,9 @@ class Util {
   getToken() {
     return localStorage.getItem(this.loginToken)
   }
+  removeToken() {
+    return localStorage.removeItem(this.loginToken)
+  }
 }
 
 export default Util

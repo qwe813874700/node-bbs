@@ -14,13 +14,13 @@ require('./models');
 app.use(verToken.verfiyToken)
 
 //验证token是否过期并规定那些路由不需要验证
-// app.use(expressJwt({
-//   secret: 'bbs_token',
-//   algorithms: ['HS256']
-// }).unless({
-//   path: ['/users/login', '/users/register'] //不需要验证的接口名称
-// }))
-
+app.use(expressJwt({
+  secret: 'bbs_token',
+  algorithms: ['HS256']
+}).unless({
+  path: ['/users/login', '/users/register'] //不需要验证的接口名称
+}))
+  
 app.use(verToken.resultToken)
 
 // view engine setup

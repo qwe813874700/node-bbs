@@ -7,7 +7,7 @@ const User = {
   namespaced: false,
   state: {
     username: '',
-    token: util.getToken() || ''
+    token: util.getToken() || null
   },
   getters: {
     token: state => state.token
@@ -21,6 +21,13 @@ const User = {
     succLogin({ commit }, data) {
       commit(types.SET_USER_TOKEN, data)
       util.setToken(data)
+    },
+    logout({ commit }) {
+      return new Promise((resolove) => {
+        commit(types.SET_USER_TOKEN, null)
+        util.removeToken()
+        resolove()
+      })
     }
   }
 }

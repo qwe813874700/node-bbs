@@ -1,4 +1,5 @@
 import axios from 'axios'
+import store from '@/store'
 
 const server = axios.create({
   baseURL: '/',
@@ -9,6 +10,9 @@ const server = axios.create({
 })
 
 server.interceptors.request.use((config) => {
+  if (store.getters.token) {
+    config.headers['authorization'] = `Bearer ${store.getters.token}`
+  }
   return config
 }, (err) => {
   return Promise.reject(err);

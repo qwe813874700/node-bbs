@@ -5,9 +5,6 @@
 import request from 'api/request/request'
 import store from '@/store'
 
-const headers = {
-  authorization: store.getters.token
-}
 class Request {
   register(data) {
     return request({
@@ -27,8 +24,7 @@ class Request {
     return request({
       url: '/users/getinfo',
       method: 'get',
-      data,
-      headers
+      data
     })
   }
 }

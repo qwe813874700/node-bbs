@@ -55,13 +55,15 @@ export default {
                 message: res.msg
               })
               this.$store.dispatch('succLogin', res.token)
+              this.$router.push({
+                path: '/'
+              })
             } else {
               this.$notify.error({
                 title: '失败',
                 message: res.msg
               })
             }
-            this.$request.getinfo()
           })
         } else {
           return false;

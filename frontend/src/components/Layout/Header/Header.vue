@@ -12,14 +12,14 @@
         <li>
           <router-link to="/topic/111">我的话题</router-link>
         </li>
-        <li>
+        <li v-if="!token">
           <router-link to="/login">登录</router-link>
         </li>
-        <li>
+        <li v-if="!token">
           <router-link to="/register">注册</router-link>
         </li>
-        <li>
-          <router-link to="/">退出</router-link>
+        <li v-if="token" @click="logout">
+          <a>退出</a>
         </li>
       </ul>
     </div>
@@ -36,29 +36,41 @@
       <li>
         <router-link to="/">我的话题</router-link>
       </li>
-      <li>
+      <li v-if="!token">
         <router-link to="/login">登录</router-link>
       </li>
-      <li>
+      <li v-if="!token">
         <router-link to="/register">注册</router-link>
       </li>
-      <li>
-        <router-link to="/">退出</router-link>
+      <li v-if="token" @click="logout">
+        <a>退出</a>
       </li>
     </ul>
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
   data() {
     return {
       hidden: true
     }
   },
+  computed: {
+    ...mapGetters(['token'])
+  },
   methods: {
     changeMobeilType() {
       this.hidden = !this.hidden
+    },
+    logout() {
+      this.$store.dispatch('logout').then(() => {
+        this.$router.push({
+          path: '/login'
+        })
+      })
     }
   }
 }
